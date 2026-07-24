@@ -1,0 +1,20 @@
+{
+  "kind": "webpage_snapshot",
+  "url": "https://zmyun.com/",
+  "final_url": "https://zmyun.com/",
+  "status": 200,
+  "read_status": "blocked",
+  "content_type": "text/html; charset=UTF-8",
+  "fetched_at": "2026-07-22T04:15:36.458464+00:00",
+  "title": "众马云官网_会计财务软件_进销存系统_代账软件_12年品牌",
+  "description": "众马云财务软件、进销存ERP软件、代理记账软件是四川众马科技公司旗下品牌产品，已稳定运行十余年。本软件功能强大、技术专业、简洁好用，有云服务版、单机版、手机版、小程序等多个版本，支持免费试用，满意再购买。累计服务全国及海外企业超30万家,平台用户规模达百万级!咨询电话：400-002-8958",
+  "site_name": null,
+  "published_at": null,
+  "source_type": "unknown",
+  "text": "",
+  "quote_candidates": [],
+  "word_count": 0,
+  "truncated": false,
+  "blocked": true,
+  "source": "direct_http"
+}

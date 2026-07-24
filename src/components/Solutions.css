@@ -1,0 +1,106 @@
+/* ============================================================
+   简财云官网 — 解决方案样式
+   ============================================================ */
+
+.solutions-section {
+  background-color: var(--bg-primary);
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .solutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .solutions-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* 方案卡片 */
+.solution-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 48px 36px;
+  transition: border-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.solution-card:hover {
+  border-color: var(--border-gold);
+}
+
+.solution-number {
+  font-size: 14px;
+  color: var(--accent-gold);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: var(--font-sans);
+}
+
+.solution-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 16px;
+  letter-spacing: -0.01em;
+}
+
+.solution-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-top: 16px;
+}
+
+.solution-bullets {
+  margin-top: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.solution-bullets li {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.solution-bullet-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.solution-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent-gold);
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 32px;
+  transition: gap 0.2s ease, color 0.2s ease;
+  gap: 4px;
+}
+
+.solution-link:hover {
+  gap: 8px;
+}

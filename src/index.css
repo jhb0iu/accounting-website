@@ -1,0 +1,11 @@
+/* ============================================================
+   简财云官网 — 入口样式
+   ============================================================ */
+
+@import './styles/variables.css';
+@import './styles/global.css';
+
+/* Framer Motion 初始化动画禁用（避免闪烁） */
+[data-framer-motion] {
+  will-change: transform, opacity;
+}

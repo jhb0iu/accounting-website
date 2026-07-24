@@ -1,0 +1,47 @@
+/* ============================================================
+   简财云官网 — CSS 变量定义
+   深石墨科技黑 + 暖琥珀金
+   ============================================================ */
+
+:root {
+  /* 背景色 */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-tertiary: #16161d;
+
+  /* 边框 */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-gold: rgba(201, 169, 110, 0.3);
+
+  /* 文字 */
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+
+  /* 品牌强调色 */
+  --accent-gold: #c9a96e;
+  --accent-gold-hover: #d4b87a;
+  --accent-gold-dim: rgba(201, 169, 110, 0.15);
+  --accent-gold-border: rgba(201, 169, 110, 0.2);
+
+  /* 功能色 */
+  --success: #4ade80;
+
+  /* 排版 */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-chinese: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+  /* 版心 */
+  --page-max-width: 1700px;
+  --page-padding: 0 48px;
+
+  /* 圆角 */
+  --radius-card: 16px;
+  --radius-card-sm: 12px;
+  --radius-pill: 9999px;
+
+  /* 区块间距 */
+  --section-gap: 160px;
+  --section-gap-mobile: 100px;
+}

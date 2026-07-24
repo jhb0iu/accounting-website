@@ -1,0 +1,166 @@
+/* ============================================================
+   简财云官网 — 导航栏样式
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+  background-color: transparent;
+}
+
+.navbar-scrolled {
+  background-color: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 1024px) {
+  .navbar-inner {
+    padding: 0 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-inner {
+    padding: 0 20px;
+  }
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.navbar-logo:hover {
+  color: var(--accent-gold);
+}
+
+.navbar-brand {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+/* 桌面端导航链接 */
+.desktop-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar-link {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.2s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.navbar-link:hover {
+  color: var(--accent-gold);
+}
+
+/* 下载按钮 */
+.navbar-download-btn {
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+/* 移动端汉堡按钮 */
+.hamburger-btn {
+  display: none;
+  padding: 8px;
+  border-radius: var(--radius-card-sm);
+  transition: background-color 0.2s ease;
+}
+
+.hamburger-btn:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* 移动端全屏菜单 */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.mobile-menu-link {
+  font-size: 20px;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.mobile-menu-link:hover {
+  color: var(--accent-gold);
+}
+
+.mobile-menu-download {
+  margin-top: 24px;
+  padding: 14px 32px;
+  font-size: 16px;
+}
+
+/* 响应式显示 */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .desktop-links,
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "webpage_snapshot",
+  "url": "https://www.ningmengyun.com/",
+  "final_url": "https://www.ningmengyun.com/",
+  "status": 200,
+  "read_status": "blocked",
+  "content_type": "text/html",
+  "fetched_at": "2026-07-22T04:15:36.266290200+00:00",
+  "title": "柠檬云财务软件-永久免费的专业财务软件",
+  "description": "柠檬云是国内领先的互联网财税平台，旗下已推出财务软件、进销存、工资条、代账软件、会计头条、柠檬云课堂等互联网财税产品，服务超600万企业用户，广受中小企业及财税业界人士的认可！",
+  "site_name": null,
+  "published_at": null,
+  "source_type": "unknown",
+  "text": "",
+  "quote_candidates": [],
+  "word_count": 0,
+  "truncated": false,
+  "blocked": true,
+  "source": "direct_http"
+}

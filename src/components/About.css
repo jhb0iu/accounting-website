@@ -1,0 +1,239 @@
+/* ============================================================
+   简财云官网 — 公司简介样式
+   ============================================================ */
+
+.about-section {
+  background-color: var(--bg-primary);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 80px;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+/* 左侧文字 */
+.about-label {
+  font-size: 14px;
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.about-heading {
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.about-desc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.about-desc:last-child {
+  margin-bottom: 0;
+}
+
+/* 右侧软件界面示意框 */
+.about-visual {
+  width: 100%;
+}
+
+.app-mockup {
+  border-radius: var(--radius-card);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 窗口标题栏 */
+.app-mockup-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mockup-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mockup-dot-red {
+  background-color: #ff5f57;
+}
+
+.mockup-dot-yellow {
+  background-color: #febc2e;
+}
+
+.mockup-dot-green {
+  background-color: #28c840;
+}
+
+.mockup-title-text {
+  margin-left: 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* 窗口主体 */
+.app-mockup-body {
+  display: flex;
+  min-height: 360px;
+}
+
+/* 左侧导航栏 */
+.mockup-sidebar {
+  width: 140px;
+  padding: 16px 12px;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.mockup-sidebar-item {
+  height: 10px;
+  border-radius: 4px;
+  background: var(--border-subtle);
+}
+
+.mockup-sidebar-item.active {
+  background: var(--accent-gold-dim);
+  border: 1px solid var(--accent-gold-border);
+}
+
+.mockup-sidebar-spacer {
+  flex: 1;
+}
+
+/* 右侧内容区 */
+.mockup-main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* 工具栏 */
+.mockup-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.mockup-toolbar-search {
+  flex: 1;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+}
+
+.mockup-toolbar-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--accent-gold-dim);
+  border: 1px solid var(--accent-gold-border);
+}
+
+/* 表格 */
+.mockup-table-header,
+.mockup-table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.mockup-table-header {
+  border-bottom: 1px solid var(--border-medium);
+  padding-bottom: 8px;
+}
+
+.mockup-table-cell {
+  height: 10px;
+  border-radius: 4px;
+  background: var(--border-subtle);
+}
+
+.mockup-table-header .mockup-table-cell {
+  background: rgba(255, 255, 255, 0.1);
+  height: 8px;
+}
+
+.mockup-table-row {
+  padding: 8px 0;
+}
+
+.mockup-table-row:nth-child(even) .mockup-table-cell {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* 底部统计栏 */
+.mockup-footer-bar {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.mockup-footer-stat {
+  flex: 1;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+}
+
+.mockup-footer-stat.gold-stat {
+  background: var(--accent-gold-dim);
+  border-color: var(--accent-gold-border);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .app-mockup {
+    max-width: 100%;
+  }
+
+  .mockup-sidebar {
+    width: 80px;
+    padding: 12px 8px;
+  }
+
+  .mockup-table-header,
+  .mockup-table-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}

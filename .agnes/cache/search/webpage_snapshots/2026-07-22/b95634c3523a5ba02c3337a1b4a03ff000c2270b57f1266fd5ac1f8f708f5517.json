@@ -1,0 +1,20 @@
+{
+  "kind": "webpage_snapshot",
+  "url": "https://www.jdy.com/?site=cn",
+  "final_url": "https://www.jdy.com/?site=cn",
+  "status": 200,
+  "read_status": "blocked",
+  "content_type": "text/html; charset=UTF-8",
+  "fetched_at": "2026-07-22T04:15:36.690474500+00:00",
+  "title": "金蝶AI星辰官网_财务软件_进销存软件_ERP软件系统_AI记账软件_金蝶AI星辰",
+  "description": "金蝶AI星辰官网，提供财务软件、进销存软件、ERP软件、记账软件，聚焦中小企业业财税一体化需求，整合财税管理、进销存管理、生产管理、零售管理，支持移动电脑多端协同与 AI 智能功能，覆盖 20+ 行业，助力企业实现供应链流程化、生产精细化与决策实时化，保障合规经营，降低成本，提升运营效率。",
+  "site_name": null,
+  "published_at": null,
+  "source_type": "unknown",
+  "text": "",
+  "quote_candidates": [],
+  "word_count": 0,
+  "truncated": false,
+  "blocked": true,
+  "source": "direct_http"
+}
