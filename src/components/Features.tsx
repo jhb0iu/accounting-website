@@ -1,9 +1,8 @@
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { Shield, ScanLine, Building2, FileText, Calculator, Coins } from 'lucide-react'
 import './Features.css'
 
 // 简财云官网 — 产品优势（6大核心能力）
-// 3列×2行网格卡片布局
 
 interface FeatureItem {
   icon: React.ReactNode
@@ -44,32 +43,29 @@ const features: FeatureItem[] = [
   },
 ]
 
-// Framer Motion 容器配置
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.1 },
   },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.7, ease: [0.16 as const, 1 as const, 0.3 as const, 1 as const] },
   },
 }
 
-const titleVariants = {
+const titleVariants: Variants = {
   hidden: { opacity: 0, y: 40, filter: 'blur(8px)' },
   visible: {
     opacity: 1,
     y: 0,
     filter: 'blur(0)',
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.7, ease: [0.16 as const, 1 as const, 0.3 as const, 1 as const] },
   },
 }
 
@@ -77,7 +73,6 @@ export default function Features() {
   return (
     <section id="features" className="section features-section">
       <div className="container">
-        {/* 标题区 */}
         <motion.div
           className="section-header"
           variants={titleVariants}
@@ -89,7 +84,6 @@ export default function Features() {
           <h2 className="section-title">为什么选择简财云</h2>
         </motion.div>
 
-        {/* 6 个功能卡片 */}
         <motion.div
           className="features-grid"
           variants={containerVariants}
@@ -98,11 +92,7 @@ export default function Features() {
           viewport={{ once: true, margin: '-100px' }}
         >
           {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              className="feature-card"
-              variants={itemVariants}
-            >
+            <motion.div key={index} className="feature-card" variants={itemVariants}>
               <div className="feature-icon">{feature.icon}</div>
               <h3 className="feature-title">{feature.title}</h3>
               <p className="feature-desc">{feature.desc}</p>

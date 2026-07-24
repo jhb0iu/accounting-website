@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import './Solutions.css'
+
+// 简财云官网 — 解决方案（4类客户场景）
 
 interface SolutionItem {
   number: string
@@ -35,19 +37,19 @@ const solutions: SolutionItem[] = [
   },
 ]
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16 as const, 1 as const, 0.3 as const, 1 as const] } },
 }
 
-const titleVariants = {
+const titleVariants: Variants = {
   hidden: { opacity: 0, y: 40, filter: 'blur(8px)' },
-  visible: { opacity: 1, y: 0, filter: 'blur(0)', transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, filter: 'blur(0)', transition: { duration: 0.7, ease: [0.16 as const, 1 as const, 0.3 as const, 1 as const] } },
 }
 
 export default function Solutions() {
