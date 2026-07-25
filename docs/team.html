@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团队 | 简财云</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#333;min-height:100vh;}
+        nav{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);position:sticky;top:0;z-index:100;}
+        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 20px;}
+        .logo{font-size:24px;font-weight:bold;color:#2563eb;text-decoration:none;}
+        .nav-links{display:flex;gap:24px;align-items:center;}
+        .nav-links a{color:#555;text-decoration:none;font-weight:500;transition:color .3s;}
+        .nav-links a:hover{color:#2563eb;}
+        .nav-links a.active{color:#2563eb;font-weight:600;}
+        .container{max-width:1200px;margin:0 auto;padding:30px 20px;}
+        .panel{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:24px;}
+        .panel-title{font-size:18px;font-weight:600;margin-bottom:20px;color:#1e293b;}
+        /* 团队列表 */
+        .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;}
+        .member-card{background:#f8fafc;border-radius:12px;padding:20px;text-align:center;transition:transform .3s;border:2px solid transparent;}
+        .member-card:hover{transform:translateY(-3px);border-color:#2563eb;}
+        .avatar{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 12px;color:white;font-weight:bold;}
+        .member-name{font-size:16px;font-weight:600;margin-bottom:4px;}
+        .member-role{font-size:13px;color:#64748b;margin-bottom:8px;}
+        .member-stat{font-size:12px;color:#94a3b8;}
+        /* 账单表格 */
+        .bill-table{width:100%;border-collapse:collapse;}
+        .bill-table th,.bill-table td{padding:12px;text-align:left;border-bottom:1px solid #f1f5f9;font-size:14px;}
+        .bill-table th{color:#64748b;font-weight:500;}
+        .status-paid{color:#10b981;background:#f0fdf4;padding:2px 8px;border-radius:10px;font-size:12px;}
+        .status-pending{color:#f59e0b;background:#fffbeb;padding:2px 8px;border-radius:10px;font-size:12px;}
+        .status-split{color:#2563eb;background:#eff6ff;padding:2px 8px;border-radius:10px;font-size:12px;}
+        .btn-sm{padding:6px 12px;border-radius:8px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;font-size:12px;}
+        .btn-sm:hover{background:#2563eb;color:#fff;border-color:#2563eb;}
+        .form-inline{display:flex;gap:8px;flex-wrap:wrap;}
+        .form-input{padding:8px 12px;border:1px solid #e2e8f0;border-radius:8px;font-size:14px;flex:1;min-width:120px;}
+        .btn-primary{background:#2563eb;color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:500;}
+        .btn-primary:hover{background:#1d4ed8;}
+    </style>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/index.html" class="logo">💰 简财云</a>
+        <div class="nav-links">
+            <a href="/index.html">首页</a>
+            <a href="/dashboard">仪表盘</a>
+            <a href="/reports">报表</a>
+            <a href="/team" class="active">团队</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <!-- 创建/加入团队 -->
+    <div class="panel">
+        <div class="panel-title">👥 我的团队</div>
+        <div class="form-inline">
+            <input type="text" class="form-input" id="team-name" placeholder="团队名称（如：室友AA）">
+            <button class="btn-primary" onclick="createTeam()">➕ 创建团队</button>
+            <span style="color:#94a3b8;">|</span>
+            <input type="text" class="form-input" id="join-code" placeholder="输入邀请码加入团队">
+            <button class="btn-primary" onclick="joinTeam()">加入</button>
+        </div>
+    </div>
+
+    <!-- 团队成员 -->
+    <div class="panel">
+        <div class="panel-title">👤 成员列表</div>
+        <div class="team-grid" id="member-grid"></div>
+    </div>
+
+    <!-- 共享账单 -->
+    <div class="panel">
+        <div class="panel-title">📋 共享账单 & AA分摊</div>
+        <div class="form-inline" style="margin-bottom:16px;">
+            <select class="form-input" id="bill-person"><option>发起人</option></select>
+            <input type="text" class="form-input" id="bill-desc" placeholder="账单描述">
+            <input type="number" class="form-input" id="bill-amount" placeholder="金额" style="max-width:120px;">
+            <select class="form-input" id="bill-type" style="max-width:140px;">
+                <option value="all">全员均摊</option>
+                <option value="custom">自定义</option>
+            </select>
+            <button class="btn-primary" onclick="addBill()">添加账单</button>
+        </div>
+        <table class="bill-table">
+            <thead><tr><th>账单</th><th>金额</th><th>状态</th><th>操作</th></tr></thead>
+            <tbody id="bill-list"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+const TEAM_KEY='jcy_team_v1';
+const COLORS=['#2563eb','#10b981','#f59e0b','#ef4444','#8b5cf6','#ec4899','#06b6d4'];
+
+function loadTeam(){try{return JSON.parse(localStorage.getItem(TEAM_KEY))||{name:'',members:[],bills:[]};}catch(e){return{name:'',members:[],bills:[]};}}
+function saveTeam(t){localStorage.setItem(TEAM_KEY,JSON.stringify(t));}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+function genId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+
+// 初始化
+(function init() {
+    const team=loadTeam();
+    document.getElementById('team-name').value=team.name;
+    updateMemberSelect(team);
+    renderMembers(team);
+    renderBills(team);
+})();
+
+function createTeam() {
+    const name=document.getElementById('team-name').value.trim();
+    if(!name)return alert('请输入团队名称');
+    const team={name,members:[{id:'me',name:name+'的主人',color:COLORS[0],totalSpent:0}],bills:[]};
+    saveTeam(team);renderMembers(team);updateMemberSelect(team);renderBills(team);
+}
+
+function joinTeam() {
+    const code=prompt('请输入邀请码');
+    if(!code)return;
+    alert('模拟加入成功！实际部署后需配合后端验证。');
+}
+
+function renderMembers(team) {
+    const grid=document.getElementById('member-grid');
+    if(!team.members.length){grid.innerHTML='<p style="color:#94a3b8;">暂无成员</p>';return;}
+    grid.innerHTML=team.members.map((m,i)=>`
+        <div class="member-card">
+            <div class="avatar" style="background:${m.color};">${esc(m.name[0])}</div>
+            <div class="member-name">${esc(m.name)}</div>
+            <div class="member-role">${m.id==='me'?'我':'成员'}</div>
+            <div class="member-stat">已垫付 ¥${Number(m.totalSpent||0).toFixed(2)}</div>
+        </div>
+    `).join('');
+}
+
+function updateMemberSelect(team) {
+    const sel=document.getElementById('bill-person');
+    sel.innerHTML=team.members.map(m=>`<option value="${m.id}">${esc(m.name)}</option>`).join('');
+}
+
+function addBill() {
+    const desc=document.getElementById('bill-desc').value.trim();
+    const amount=parseFloat(document.getElementById('bill-amount').value);
+    if(!desc||!amount||amount<=0)return alert('请填写完整信息');
+    const personId=document.getElementById('bill-person').value;
+    const type=document.getElementById('bill-type').value;
+    const team=loadTeam();
+    const bill={id:genId(),desc,amount,type,personId,status:type==='all'?'split':'paid'};
+    // 更新垫付款
+    const member=team.members.find(m=>m.id===personId);
+    if(member)member.totalSpent=(Number(member.totalSpent||0)+amount);
+    team.bills.push(bill);saveTeam(team);renderMembers(team);renderBills(team);
+    document.getElementById('bill-desc').value='';
+    document.getElementById('bill-amount').value='';
+}
+
+function markPaid(id) {
+    const team=loadTeam();
+    const bill=team.bills.find(b=>b.id===id);
+    if(!bill)return;
+    bill.status='paid';saveTeam(team);renderBills(team);
+}
+
+function renderBills(team) {
+    const tbody=document.getElementById('bill-list');
+    if(!team.bills.length){tbody.innerHTML='<tr><td colspan="4" style="text-align:center;color:#94a3b8;">暂无共享账单</td></tr>';return;}
+    tbody.innerHTML=team.bills.map(b=>{
+        const person=team.members.find(m=>m.id===b.personId);
+        let statusHtml;
+        if(b.type==='all'){
+            statusHtml=b.status==='paid'?'<span class="status-paid">已结清</span>':'<span class="status-split">AA中</span>';
+        } else {
+            statusHtml=b.status==='paid'?'<span class="status-paid">已付</span>':'<span class="status-pending">待确认</span>';
+        }
+        return `<tr>
+            <td>${esc(b.desc)}<br><small style="color:#94a3b8;">由 ${person?esc(person.name):'未知'} 发起</small></td>
+            <td><strong>¥${b.amount.toFixed(2)}</strong></td>
+            <td>${statusHtml}</td>
+            <td>${b.type==='all'&&b.status!=='paid'?`<button class="btn-sm" onclick="markPaid('${b.id}')">标记已结清</button>`:'-'}</td>
+        </tr>`;
+    }).join('');
+}
+</script>
+</body>
+</html>

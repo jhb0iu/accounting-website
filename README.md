@@ -1,32 +1,25 @@
-# React + TypeScript + Vite
+# 简财云 — 让财务管理回归简单
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+个人财务与团队协作的一站式记账工具。
 
-Currently, two official plugins are available:
+## 功能特性
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- ✅ **清晰的分类管理** - 自定义收入和支出类别
+- ✅ **智能预算控制** - 设定月度预算，实时跟踪消费进度
+- ✅ **多维度报表分析** - 按时间、类别生成可视化图表
+- ✅ **多人协作记账** - 创建团队，共享账单，AA制自动分摊
+- ✅ **定时记录** - 固定账单设置自动记账
+- ✅ **数据安全保障** - 本地存储，支持导出备份
 
-## React Compiler
+## 快速开始
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. 访问 [仪表盘](/dashboard)
+2. 添加第一笔账目
+3. 在 [报表页面](/reports) 查看分析
+4. 邀请好友加入 [团队协作](/team)
 
-## Expanding the Oxlint configuration
+## 技术栈
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+- React + TypeScript + Vite
+- 数据存储：浏览器 localStorage（纯前端无后端）
+- 部署：GitHub Actions → GitHub Pages

@@ -1,8 +1,30 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// 官网项目，GitHub Pages 兼容
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './',
-})
+  base: '/',
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+    strictPort: true
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets'
+  },
+  css: {
+    modules: {
+      localsConvention: 'camelCase'
+    }
+  },
+  optimizeDeps: {
+    exclude: ['lucide-react']
+  },
+  resolve: {
+    alias: {
+      './runtimeConfig': './runtimeConfig.browser'
+    }
+  }
+});

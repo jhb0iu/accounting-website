@@ -1,2 +1,4 @@
 node_modules/
-.agnes/
+.DS_Store
+dist/
+*.local

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <encoding>UTF-8</encoding>
+  <webAppDirectory>${project.basedir}/docs</webAppDirectory>
+  <contextPath>/</contextPath>
+  <connectors>
+    <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+      <port>8080</port>
+      <maxIdleTime>30000</maxIdleTime>
+    </connector>
+  </connectors>
+</configuration>

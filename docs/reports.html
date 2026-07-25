@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报表 | 简财云</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        * { margin:0;padding:0;box-sizing:border-box; }
+        body { font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#333;min-height:100vh; }
+        nav{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);position:sticky;top:0;z-index:100;}
+        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 20px;}
+        .logo{font-size:24px;font-weight:bold;color:#2563eb;text-decoration:none;}
+        .nav-links{display:flex;gap:24px;align-items:center;}
+        .nav-links a{color:#555;text-decoration:none;font-weight:500;transition:color .3s;}
+        .nav-links a:hover{color:#2563eb;}
+        .nav-links a.active{color:#2563eb;font-weight:600;}
+        .container{max-width:1200px;margin:0 auto;padding:30px 20px;}
+        .panel{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:24px;}
+        .panel-title{font-size:18px;font-weight:600;margin-bottom:20px;color:#1e293b;}
+        .time-tabs{display:flex;gap:8px;margin-bottom:20px;}
+        .tab{padding:8px 20px;border-radius:20px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;font-size:14px;color:#64748b;transition:all .3s;}
+        .tab.active{background:#2563eb;color:#fff;border-color:#2563eb;}
+        .chart-area{display:flex;align-items:flex-end;gap:8px;height:250px;padding:20px 0;border-bottom:2px solid #e2e8f0;}
+        .bar-group{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;}
+        .bar-pair{display:flex;gap:4px;width:100%;align-items:flex-end;justify-content:center;height:100%;}
+        .bar{border-radius:6px 6px 0 0;width:18px;min-height:4px;transition:height .5s ease;}
+        .bar.income{background:#10b981;}
+        .bar.expense{background:#ef4444;}
+        .bar-label{font-size:12px;color:#64748b;text-align:center;white-space:nowrap;}
+        .legend{display:flex;gap:16px;justify-content:center;margin-bottom:16px;}
+        .legend-item{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;}
+        .legend-dot{width:12px;height:12px;border-radius:3px;}
+        /* 汇总 */
+        .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+        .summary-card{background:#f8fafc;border-radius:12px;padding:16px;text-align:center;}
+        .summary-card h4{font-size:13px;color:#64748b;margin-bottom:8px;}
+        .summary-card .val{font-size:24px;font-weight:700;}
+        .summary-card .val.inc{color:#10b981;}
+        .summary-card .val.exp{color:#ef4444;}
+        @media(max-width:768px){.chart-area{height:180px;}}
+    </style>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="/index.html" class="logo">💰 简财云</a>
+        <div class="nav-links">
+            <a href="/index.html">首页</a>
+            <a href="/dashboard">仪表盘</a>
+            <a href="/reports" class="active">报表</a>
+            <a href="/team">团队</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="panel">
+        <div class="panel-title">📊 收支趋势</div>
+        <div class="time-tabs">
+            <button class="tab active" data-range="month">本月</button>
+            <button class="tab" data-range="3months">近3个月</button>
+            <button class="tab" data-range="year">今年</button>
+        </div>
+        <div class="legend"><span class="legend-item"><span class="legend-dot" style="background:#10b981"></span>收入</span><span class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>支出</span></div>
+        <div class="chart-area" id="trend-chart"></div>
+    </div>
+    <div class="panel">
+        <div class="panel-title">💸 支出分类排行</div>
+        <div id="cat-rank"></div>
+    </div>
+    <div class="panel">
+        <div class="panel-title">🏷️ 标签分析</div>
+        <div id="tag-analysis"></div>
+    </div>
+    <div class="panel">
+        <div class="panel-title">📁 导出与备份</div>
+        <div class="summary-grid">
+            <div class="summary-card"><h4>导出数据(JSON)</h4><button class="btn-export" onclick="exportData('json')">📥 下载 JSON</button></div>
+            <div class="summary-card"><h4>导出报表(CSV)</h4><button class="btn-export" onclick="exportData('csv')">📥 下载 CSV</button></div>
+            <div class="summary-card"><h4>导入数据</h4><input type="file" accept=".json" onchange="importData(event)" style="margin-top:8px;"><br><small style="color:#94a3b8;">支持 .json 格式</small></div>
+        </div>
+    </div>
+</div>
+<script>
+const DATA_KEY='jcy_transactions_v1';
+const CATEGORY_COLORS={'餐饮':'#ef4444','交通':'#f59e0b','购物':'#10b981','娱乐':'#3b82f6','居住':'#8b5cf6','医疗':'#ec4899','教育':'#06b6d4','通讯':'#84cc16','其他':'#94a3b8'};
+function load(){try{return JSON.parse(localStorage.getItem(DATA_KEY))||[];}catch(e){return[];}}
+function fmt(n){return Number(n).toFixed(2);}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
+// 时间筛选
+let currentRange='month';
+document.querySelectorAll('.tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        currentRange=tab.dataset.range;
+        renderAll();
+    });
+});
+
+function getDateRange() {
+    const now=new Date();
+    if(currentRange==='month'){
+        const y=now.getFullYear(),m=String(now.getMonth()+1).padStart(2,'0');
+        return {start:y+'-'+m+'-01', end:y+'-'+m+'-'+new Date(y,now.getMonth()+1,0).getDate().toString().padStart(2,'0')};
+    }
+    if(currentRange==='3months'){
+        const s=new Date(now.getFullYear(),now.getMonth()-2,1);
+        const e=new Date(now.getFullYear(),now.getMonth()+1,0);
+        return {start:s.toISOString().slice(0,10),end:e.toISOString().slice(0,10)};
+    }
+    return {start:now.getFullYear()+'-01-01',end:now.getFullYear()+'-12-31'};
+}
+
+function renderTrend() {
+    const list=load();
+    const {start,end}=getDateRange();
+    const chart=document.getElementById('trend-chart');
+    let labels=[], incomeData=[], expenseData=[];
+
+    if(currentRange==='month'||currentRange==='3months'){
+        const dates=[];
+        let cur=new Date(start);const endDate=new Date(end);
+        while(cur<=endDate){dates.push(cur.toISOString().slice(0,10));cur.setDate(cur.getDate()+1);}
+        // 采样：每页最多展示20个日期点
+        const step=Math.max(1,Math.ceil(dates.length/20));
+        for(let i=0;i<dates.length;i+=step){
+            const d=dates.slice(i,i+step).join(',');
+            const inc=list.filter(t=>t.type==='income'&&d.includes(t.date)).reduce((s,t)=>s+Number(t.amount),0);
+            const exp=list.filter(t=>t.type==='expense'&&d.includes(t.date)).reduce((s,t)=>s+Number(t.amount),0);
+            labels.push(dates[i].slice(5));
+            incomeData.push(inc);expenseData.push(exp);
+        }
+    } else {
+        for(let m=1;m<=12;m++){
+            const p=String(m).padStart(2,'0');
+            const inc=list.filter(t=>t.type==='income'&&t.date.startsWith(String(new Date().getFullYear())+'-'+p)).reduce((s,t)=>s+Number(t.amount),0);
+            const exp=list.filter(t=>t.type==='expense'&&t.date.startsWith(String(new Date().getFullYear())+'-'+p)).reduce((s,t)=>s+Number(t.amount),0);
+            labels.push(p+'月');incomeData.push(inc);expenseData.push(exp);
+        }
+    }
+    const maxVal=Math.max(...incomeData,...expenseData,1);
+    chart.innerHTML=`${labels.map((l,i)=>`
+        <div class="bar-group">
+            <div class="bar-pair">
+                <div class="bar income" style="height:${Math.max(4,incomeData[i]/maxVal*100)}%" title="收入 ¥${fmt(incomeData[i])}"></div>
+                <div class="bar expense" style="height:${Math.max(4,expenseData[i]/maxVal*100)}%" title="支出 ¥${fmt(expenseData[i])}"></div>
+            </div>
+            <div class="bar-label">${l}</div>
+        </div>`).join('')}`;
+}
+
+function renderCatRank() {
+    const list=load().filter(t=>t.type==='expense');
+    const byCat={};list.forEach(t=>{byCat[t.category]=(byCat[t.category]||0)+Number(t.amount);});
+    const entries=Object.entries(byCat).sort((a,b)=>b[1]-a[1]);
+    if(!entries.length){document.getElementById('cat-rank').innerHTML='<p style="color:#94a3b8;text-align:center;">暂无支出记录</p>';return;}
+    const total=entries.reduce((s,[,v])=>s+v,0);
+    const barMax=400;
+    document.getElementById('cat-rank').innerHTML=entries.map(([cat,val],i)=>`
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <span style="width:70px;font-size:14px;">${CATEGORY_COLORS[cat]||'#94a3b8'?'<span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:'+CATEGORY_COLORS[cat]+';vertical-align:middle;margin-right:6px;"></span>':''}${esc(cat)}</span>
+            <div style="flex:1;height:24px;background:#f1f5f9;border-radius:12px;overflow:hidden;">
+                <div style="height:100%;width:${val/total*100}%;background:${CATEGORY_COLORS[cat]||'#94a3b8'};border-radius:12px;transition:width .5s;"></div>
+            </div>
+            <span style="width:80px;text-align:right;font-size:14px;font-weight:600;">¥${fmt(val)}</span>
+            <span style="width:50px;text-align:right;font-size:12px;color:#94a3b8;">${Math.round(val/total*100)}%</span>
+        </div>
+    `).join('');
+}
+
+function renderTagAnalysis() {
+    const list=load();
+    const tags={};list.forEach(t=>(t.tags||[]).forEach(tag=>{tags[tag]=(tags[tag]||0)+Number(t.amount);})) ;
+    const entries=Object.entries(tags).sort((a,b)=>b[1]-a[1]);
+    if(!entries.length){document.getElementById('tag-analysis').innerHTML='<p style="color:#94a3b8;text-align:center;">暂无标签数据</p>';return;}
+    document.getElementById('tag-analysis').innerHTML=entries.map(([tag,val])=>`
+        <span style="display:inline-flex;align-items:center;gap:6px;background:#eff6ff;color:#2563eb;padding:8px 14px;border-radius:16px;margin:4px;font-size:14px;">#${esc(tag)} <strong>¥${fmt(val)}</strong></span>
+    `).join('');
+}
+
+function exportData(format) {
+    const list=load();
+    if(!list.length)return alert('暂无数据可导出');
+    if(format==='json'){
+        const blob=new Blob([JSON.stringify(list,null,2)],{type:'application/json'});
+        downloadBlob(blob,'简财云_备份_'+new Date().toISOString().slice(0,10)+'.json');
+    } else {
+        const csv='\uFEFF日期,时间,类型,类别,金额,备注,标签\n'+list.map(t=>`${t.date},${t.time},${t.type},${t.category},${t.amount},"${(t.note||'').replace(/"/g,'""')}",${(t.tags||[]).join(',')}`).join('\n');
+        const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+        downloadBlob(blob,'简财云_报表_'+new Date().toISOString().slice(0,10)+'.csv');
+    }
+}
+
+function importData(e) {
+    const file=e.target.files[0];if(!file)return;
+    const reader=new FileReader();
+    reader.onload=function(ev){
+        try{
+            const imported=JSON.parse(ev.target.result);
+            if(!Array.isArray(imported))return alert('文件格式不正确');
+            if(!confirm('将导入 '+imported.length+' 条记录，与现有数据合并。继续？'))return;
+            const existing=load();
+            const merged=[...existing,...imported];
+            localStorage.setItem(DATA_KEY,JSON.stringify(merged));
+            renderAll();alert('导入成功！');
+        }catch(err){alert('读取失败：'+err.message);}
+    };
+    reader.readAsText(file);
+}
+
+function downloadBlob(blob,filename){
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');
+    a.href=url;a.download=filename;a.click();URL.revokeObjectURL(url);
+}
+
+function renderAll(){renderTrend();renderCatRank();renderTagAnalysis();}
+renderAll();
+</script>
+</body>
+</html>
