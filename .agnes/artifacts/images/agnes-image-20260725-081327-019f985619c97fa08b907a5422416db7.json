@@ -1,0 +1,17 @@
+{
+  "kind": "agnes_image",
+  "mode": "text_to_image",
+  "model": "agnes-image-2.1-flash",
+  "original_prompt": "生成第二个\"简财云\"logo方案，更简约的抽象几何风格",
+  "enhanced_prompt": "A hyper-minimalist logo mark for a financial software brand called \"简财云\". The icon is composed of three clean geometric elements: a solid circle representing completeness/trust, a subtle open curve above it suggesting a cloud, and a small upward-trending line inside — all in a refined teal-to-blue gradient on pure white background. Ultra sparse composition with generous whitespace. No Chinese characters, no dollar signs, no leaves, no shields. Think Apple-level simplicity meets fintech credibility. Flat vector art style, 1024x1024, centered, completely original design.",
+  "size": "1024x1024",
+  "remote_url": "https://platform-outputs.agnes-ai.space/images/t2i/a1397de5b1124b06813ff1a620a1c3a9.png",
+  "local_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081327-019f985619c97fa08b907a5422416db7.png",
+  "metadata_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081327-019f985619c97fa08b907a5422416db7.json",
+  "mime_type": "image/png",
+  "width": 1024,
+  "height": 1024,
+  "bytes": 550851,
+  "preview": null,
+  "created_at": "2026-07-25T08:13:27.369102500+00:00"
+}

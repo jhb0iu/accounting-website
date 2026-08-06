@@ -1,0 +1,17 @@
+{
+  "kind": "agnes_image",
+  "mode": "text_to_image",
+  "model": "agnes-image-2.1-flash",
+  "original_prompt": "生成第四个\"简财云\"财务管理软件logo方案，字母J+云组合",
+  "enhanced_prompt": "A sleek modern logo mark for a financial software brand called \"简财云\", featuring an original geometric symbol: the letter \"J\" elegantly formed by a flowing gold ribbon that curls upward like a stylized cloud, with a small circle at the top-right suggesting a sphere of data. Clean sans-serif fusion of technology and fluidity. Rendered in warm gold gradient on solid black background. Minimalist corporate identity icon — no text, just the symbol. Flat vector art style with subtle metallic sheen, 1024x1024 centered square format. Completely original design avoiding any resemblance to existing trademarked logos.",
+  "size": "1024x1024",
+  "remote_url": "https://platform-outputs.agnes-ai.space/images/t2i/22681745e27843b793c707590838bee0.png",
+  "local_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081211-019f9854f22b7a33933ee626e7a4c6de.png",
+  "metadata_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081211-019f9854f22b7a33933ee626e7a4c6de.json",
+  "mime_type": "image/png",
+  "width": 1024,
+  "height": 1024,
+  "bytes": 1022460,
+  "preview": null,
+  "created_at": "2026-07-25T08:12:11.691157500+00:00"
+}

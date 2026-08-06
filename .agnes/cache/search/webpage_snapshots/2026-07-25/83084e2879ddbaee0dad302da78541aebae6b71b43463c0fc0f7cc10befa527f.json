@@ -1,0 +1,20 @@
+{
+  "kind": "webpage_snapshot",
+  "url": "https://jhb0iu.github.io/accounting-website/",
+  "final_url": "https://jhb0iu.github.io/accounting-website/",
+  "status": 200,
+  "read_status": "empty",
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-07-25T03:55:48.662102500+00:00",
+  "title": "Vite + React + TS",
+  "description": "",
+  "site_name": null,
+  "published_at": null,
+  "source_type": "unknown",
+  "text": "",
+  "quote_candidates": [],
+  "word_count": 0,
+  "truncated": false,
+  "blocked": false,
+  "source": "direct_http"
+}

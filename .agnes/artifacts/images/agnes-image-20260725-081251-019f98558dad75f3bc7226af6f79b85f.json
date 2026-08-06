@@ -1,0 +1,17 @@
+{
+  "kind": "agnes_image",
+  "mode": "text_to_image",
+  "model": "agnes-image-2.1-flash",
+  "original_prompt": "生成一个\"简财云\"财务管理软件logo，简约大气风格，不局限于黑金色",
+  "enhanced_prompt": "A clean, modern and premium logo icon for a Chinese financial management software brand called \"简财云\". The design should be minimalist and elegant — not limited to black and gold colors. The color palette can include deep navy blue, crisp white, soft gradients of blue-teal, or a warm professional scheme. The icon concept: an abstract stylized symbol combining a simple geometric cloud shape with a subtle upward arrow or growth line, suggesting cloud computing and financial growth. Keep it extremely clean with smooth curves and balanced proportions. No text in the primary icon. Flat vector style with subtle gradient, suitable as a favicon and app icon. Centered on a neutral light gray background. 1024x1024 square format. Avoid any resemblance to existing major brand logos.",
+  "size": "1024x1024",
+  "remote_url": "https://platform-outputs.agnes-ai.space/images/t2i/cbf46609f54148fda2e0f57d520da172.png",
+  "local_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081251-019f98558dad75f3bc7226af6f79b85f.png",
+  "metadata_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081251-019f98558dad75f3bc7226af6f79b85f.json",
+  "mime_type": "image/png",
+  "width": 1024,
+  "height": 1024,
+  "bytes": 1029948,
+  "preview": null,
+  "created_at": "2026-07-25T08:12:51.501068600+00:00"
+}

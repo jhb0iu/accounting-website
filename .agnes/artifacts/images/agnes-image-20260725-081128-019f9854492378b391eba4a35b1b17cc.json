@@ -1,0 +1,17 @@
+{
+  "kind": "agnes_image",
+  "mode": "text_to_image",
+  "model": "agnes-image-2.1-flash",
+  "original_prompt": "生成第二个\"简财云\"财务管理软件logo方案，更简约的抽象图标",
+  "enhanced_prompt": "An elegant abstract logo mark for a financial cloud management software named \"简财云\". The design features a unique geometric symbol: three vertical gold bars of increasing height forming a subtle upward growth chart, integrated with a circular ring suggesting cloud connectivity — all rendered in gold gradient on deep black background. Ultra clean lines, minimalist corporate icon style. No text, no dollar signs, no shield, no leaf, no apple-like shapes. Professional fintech aesthetic with high-end metallic finish. Centered on solid black canvas. 1024x1024 square composition suitable for favicon and brand identity.",
+  "size": "1024x1024",
+  "remote_url": "https://platform-outputs.agnes-ai.space/images/t2i/a8ac1eada6c348db9f0f97016de5b303.png",
+  "local_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081128-019f9854492378b391eba4a35b1b17cc.png",
+  "metadata_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081128-019f9854492378b391eba4a35b1b17cc.json",
+  "mime_type": "image/png",
+  "width": 1024,
+  "height": 1024,
+  "bytes": 996684,
+  "preview": null,
+  "created_at": "2026-07-25T08:11:28.419498500+00:00"
+}

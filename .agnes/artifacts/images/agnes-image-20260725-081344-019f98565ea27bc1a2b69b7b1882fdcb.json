@@ -1,0 +1,17 @@
+{
+  "kind": "agnes_image",
+  "mode": "text_to_image",
+  "model": "agnes-image-2.1-flash",
+  "original_prompt": "生成第三个\"简财云\"logo方案，圆形徽章风格",
+  "enhanced_prompt": "A refined circular badge logo for a financial SaaS brand called \"简财云\". The design: a perfect circle with a thin gold border, inside which sits an abstract icon formed by three converging arcs that suggest a stylized \"JC\" (Jian Cai) monogram blended with a cloud silhouette. Color palette: navy blue (#1a2a4a) interior with warm gold (#d4a853) accents on pure white background. The overall feel is premium, trustworthy, and corporate — like a high-end financial institution's seal of quality. Minimal detail, no text beyond what could be read as abstract geometry. 1024x1024 centered square format. Completely original composition.",
+  "size": "1024x1024",
+  "remote_url": "https://platform-outputs.agnes-ai.space/images/t2i/56d17847834d49ffa29d39696685354b.png",
+  "local_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081344-019f98565ea27bc1a2b69b7b1882fdcb.png",
+  "metadata_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081344-019f98565ea27bc1a2b69b7b1882fdcb.json",
+  "mime_type": "image/png",
+  "width": 1024,
+  "height": 1024,
+  "bytes": 643435,
+  "preview": null,
+  "created_at": "2026-07-25T08:13:44.994202900+00:00"
+}

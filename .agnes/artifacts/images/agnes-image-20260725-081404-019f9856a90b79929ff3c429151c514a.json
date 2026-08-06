@@ -1,0 +1,17 @@
+{
+  "kind": "agnes_image",
+  "mode": "text_to_image",
+  "model": "agnes-image-2.1-flash",
+  "original_prompt": "生成第四个\"简财云\"logo方案，极简字母J变体",
+  "enhanced_prompt": "An ultra-clean, modern logo icon for financial software called \"简财云\". The design is a single continuous gold line that forms an abstract letter \"J\" with a smooth curve at the bottom that transforms into a soft cloud outline. Inside the loop of the J, a tiny dot represents precision and attention to detail. Color: rich gradient from deep blue (#2d5a8e) to teal (#1a8a7a), on clean white background. The style is Swiss-design minimalism — geometric, balanced, timeless. No text. Not black/gold, not clipart, not generic. Completely original geometric composition suitable for an accounting fintech brand. 1024x1024 centered square format.",
+  "size": "1024x1024",
+  "remote_url": "https://platform-outputs.agnes-ai.space/images/t2i/98071f63c28849d0bcba83ba267945e4.png",
+  "local_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081404-019f9856a90b79929ff3c429151c514a.png",
+  "metadata_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081404-019f9856a90b79929ff3c429151c514a.json",
+  "mime_type": "image/png",
+  "width": 1024,
+  "height": 1024,
+  "bytes": 301067,
+  "preview": null,
+  "created_at": "2026-07-25T08:14:04.043468800+00:00"
+}

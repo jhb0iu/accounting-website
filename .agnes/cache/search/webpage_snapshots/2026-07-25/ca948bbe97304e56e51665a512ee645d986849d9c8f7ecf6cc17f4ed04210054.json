@@ -1,0 +1,23 @@
+{
+  "kind": "webpage_snapshot",
+  "url": "https://www.claudepluginhub.com/plugins/leonxlnx-taste-skill",
+  "final_url": "https://www.claudepluginhub.com/plugins/leonxlnx-taste-skill",
+  "status": 200,
+  "read_status": "ok",
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-07-25T08:29:27.865694900+00:00",
+  "title": "taste-skill - Claude Code Skills Plugin | ClaudePluginHub",
+  "description": "Generates premium frontend design references and implements matching code, enforcing design tastes like brutalist, minimalist, editorial, and soft.…",
+  "site_name": "ClaudePluginHub",
+  "published_at": null,
+  "source_type": "unknown",
+  "text": "/ / Stats Actions Available In Tags Help us improve Share bugs, ideas, or general feedback. Stats Actions Available In Tags Help us improve Share bugs, ideas, or general feedback.",
+  "quote_candidates": [
+    "/ / Stats Actions Available In Tags Help us improve Share bugs, ideas, or general feedback.",
+    "Stats Actions Available In Tags Help us improve Share bugs, ideas, or general feedback."
+  ],
+  "word_count": 30,
+  "truncated": false,
+  "blocked": false,
+  "source": "direct_http"
+}

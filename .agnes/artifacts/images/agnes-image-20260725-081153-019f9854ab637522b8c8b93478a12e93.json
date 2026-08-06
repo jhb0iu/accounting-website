@@ -1,0 +1,17 @@
+{
+  "kind": "agnes_image",
+  "mode": "text_to_image",
+  "model": "agnes-image-2.1-flash",
+  "original_prompt": "生成第三个\"简财云\"财务管理软件logo方案，圆形印章风格",
+  "enhanced_prompt": "A premium circular logo design for a Chinese financial management software brand \"简财云\". The icon is an elegant abstract symbol inside a clean circle: stylized \"简\" character simplified into geometric lines with a subtle cloud motif woven into the strokes, rendered in brushed gold on deep matte black. Minimalist but culturally distinctive — evoking trust, precision, and modern SaaS aesthetics. No text label, just the icon mark. Flat vector style with gold foil texture. Centered composition, square format 1024x1024. Avoid any resemblance to known logos like WeChat Pay, Alipay, or major bank emblems.",
+  "size": "1024x1024",
+  "remote_url": "https://platform-outputs.agnes-ai.space/images/t2i/a4912db6b04d425abac0b2382e86c276.png",
+  "local_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081153-019f9854ab637522b8c8b93478a12e93.png",
+  "metadata_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081153-019f9854ab637522b8c8b93478a12e93.json",
+  "mime_type": "image/png",
+  "width": 1024,
+  "height": 1024,
+  "bytes": 1376394,
+  "preview": null,
+  "created_at": "2026-07-25T08:11:53.571563400+00:00"
+}

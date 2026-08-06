@@ -1,0 +1,17 @@
+{
+  "kind": "agnes_image",
+  "mode": "text_to_image",
+  "model": "agnes-image-2.1-flash",
+  "original_prompt": "生成一个\"简财云\"财务管理软件的logo图标，黑白金配色，高级简洁，不能和其他公司logo雷同",
+  "enhanced_prompt": "A modern minimalist logo design for a financial software brand called \"简财云\" (Jian Cai Yun), meaning simple finance cloud. The logo should feature: a clean geometric icon combining subtle elements of a stylized mountain, a coin/pillar, and cloud shape — representing stability in finance and cloud service. Color scheme: deep black (#0a0a0f) background with rich gold gradient (#c9a96e to #f0d78c). No text needed in the primary icon version. Sans-serif Chinese calligraphy accent optional. The style is sleek, professional, and high-end corporate identity — similar aesthetic to premium fintech brands but with a unique original composition that avoids any recognizable trademark patterns like apple silhouettes, shield shapes, or dollar signs. Centered composition on solid dark background. Flat vector art style with subtle metallic sheen.",
+  "size": "1024x1024",
+  "remote_url": "https://platform-outputs.agnes-ai.space/images/t2i/752484c69d504f61a8a17ed26c2e7029.png",
+  "local_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081107-019f9853f8c57ba0834849366aaca0c6.png",
+  "metadata_path": "D:\\kuaiji\\accounting-website\\.agnes\\artifacts\\images\\agnes-image-20260725-081107-019f9853f8c57ba0834849366aaca0c6.json",
+  "mime_type": "image/png",
+  "width": 1024,
+  "height": 1024,
+  "bytes": 856708,
+  "preview": null,
+  "created_at": "2026-07-25T08:11:07.845230500+00:00"
+}

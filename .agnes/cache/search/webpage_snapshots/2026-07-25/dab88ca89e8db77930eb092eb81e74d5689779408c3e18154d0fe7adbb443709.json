@@ -1,0 +1,20 @@
+{
+  "kind": "webpage_snapshot",
+  "url": "https://github.com/Leonxlnx/taste-skill/blob/main/skills/taste-skill-v1/SKILL.md",
+  "final_url": "https://github.com/Leonxlnx/taste-skill/blob/main/skills/taste-skill-v1/SKILL.md",
+  "status": 200,
+  "read_status": "blocked",
+  "content_type": "text/html; charset=utf-8",
+  "fetched_at": "2026-07-25T08:28:34.581341400+00:00",
+  "title": "taste-skill/skills/taste-skill-v1/SKILL.md at main · Leonxlnx/taste-skill · GitHub",
+  "description": "Taste-Skill - gives your AI good taste. stops the AI from generating boring, generic slop  - taste-skill/skills/taste-skill-v1/SKILL.md at main · Leonxlnx/taste-skill",
+  "site_name": "GitHub",
+  "published_at": null,
+  "source_type": "source_repo",
+  "text": "",
+  "quote_candidates": [],
+  "word_count": 0,
+  "truncated": false,
+  "blocked": true,
+  "source": "direct_http"
+}
