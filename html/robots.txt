@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jhb0iu.github.io/accounting-website/sitemap.xml
